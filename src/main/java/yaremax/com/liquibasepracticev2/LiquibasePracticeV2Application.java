@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,6 +23,7 @@ public class LiquibasePracticeV2Application {
     }
 
     @Bean
+    @DependsOnDatabaseInitialization
     ApplicationRunner runner (JdbcTemplate template) {
         return args -> {
             var sql = """
