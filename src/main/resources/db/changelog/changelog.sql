@@ -23,3 +23,7 @@ insert into comments (comment, article_id) values ('first' , (select max(id) fro
 insert into comments (comment, article_id) values ('first' , (select min(id) from articles));
 insert into comments (comment, article_id) values ('I came here to say that.' , (select min(id) from articles));
 -- rollback truncate articles, comments;
+
+-- changeset Xsakon:1717519639553-1
+ALTER TABLE "comments" ADD "moderated" BOOLEAN DEFAULT FALSE NOT NULL;
+-- rollback alter table comments drop column moderated;
